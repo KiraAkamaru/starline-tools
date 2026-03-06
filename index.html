@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✦ StarLine Mission Control</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+  :root {
+    --bg: #06080F;
+    --surface: #0A0D18;
+    --card: #111528;
+    --card2: #161C35;
+    --bdr: #1A1F38;
+    --bdr2: #242A48;
+    --gold: #F5C542;
+    --goldd: #C49A2E;
+    --goldg: rgba(245,197,66,0.12);
+    --warm: #F0E8D8;
+    --warmd: #B8B0A0;
+    --mut: #5A6080;
+    --ocean: #5A8FC8;
+    --oceang: rgba(90,143,200,0.12);
+    --coral: #E27B6B;
+    --coralg: rgba(226,123,107,0.12);
+    --sage: #5AAC78;
+    --sageg: rgba(90,172,120,0.12);
+    --lav: #9E7DC4;
+    --lavg: rgba(158,125,196,0.12);
+    --r: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--warm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Starfield background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1px 1px at 10% 20%, rgba(245,197,66,0.3), transparent),
+      radial-gradient(1px 1px at 30% 60%, rgba(90,143,200,0.2), transparent),
+      radial-gradient(1px 1px at 50% 10%, rgba(240,232,216,0.15), transparent),
+      radial-gradient(1px 1px at 70% 40%, rgba(245,197,66,0.2), transparent),
+      radial-gradient(1px 1px at 90% 80%, rgba(90,143,200,0.15), transparent),
+      radial-gradient(0.5px 0.5px at 15% 85%, rgba(240,232,216,0.1), transparent),
+      radial-gradient(0.5px 0.5px at 45% 35%, rgba(158,125,196,0.15), transparent),
+      radial-gradient(0.5px 0.5px at 75% 15%, rgba(240,232,216,0.12), transparent),
+      radial-gradient(0.5px 0.5px at 85% 55%, rgba(245,197,66,0.1), transparent),
+      radial-gradient(1.5px 1.5px at 25% 45%, rgba(245,197,66,0.25), transparent),
+      radial-gradient(1px 1px at 60% 70%, rgba(90,143,200,0.18), transparent),
+      radial-gradient(0.5px 0.5px at 5% 50%, rgba(240,232,216,0.08), transparent),
+      radial-gradient(0.5px 0.5px at 55% 90%, rgba(158,125,196,0.1), transparent),
+      radial-gradient(1px 1px at 40% 5%, rgba(90,143,200,0.2), transparent),
+      radial-gradient(0.5px 0.5px at 95% 30%, rgba(240,232,216,0.1), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Layout */
+  .app {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .hero {
+    padding: 60px 0 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .hero h1 span {
+    font-weight: 300;
+    color: var(--warmd);
+    font-size: 16px;
+    opacity: 0.6;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    color: var(--mut);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 8px;
+  }
+
+  .hero-sub .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 0 3px;
+  }
+  .hero-sub .tag.d { background: var(--goldg); color: var(--gold); }
+  .hero-sub .tag.b { background: var(--oceang); color: var(--ocean); }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin: 32px 0 40px;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: 20px;
+    color: var(--warmd);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+
+  .nav a:hover {
+    background: var(--card2);
+    color: var(--warm);
+    border-color: var(--bdr2);
+  }
+
+  .nav a.primary {
+    background: var(--goldg);
+    color: var(--gold);
+    border-color: var(--goldd);
+  }
+
+  .nav a.primary:hover {
+    background: rgba(245,197,66,0.2);
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-hdr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--bdr);
+  }
+
+  .section-hdr .icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-hdr h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--warm);
+  }
+
+  .section-hdr h2 span {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--mut);
+    margin-left: 8px;
+  }
+
+  /* Quick Actions Grid */
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .action-card {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.15s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action-card:hover {
+    border-color: var(--bdr2);
+    background: var(--card2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .action-card .a-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .action-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--warm);
+  }
+
+  .action-card p {
+    font-size: 12px;
+    color: var(--mut);
+    line-height: 1.5;
+  }
+
+  .action-card .a-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .a-badge.live { background: var(--sageg); color: var(--sage); }
+  .a-badge.soon { background: var(--goldg); color: var(--gold); }
+  .a-badge.info { background: var(--oceang); color: var(--ocean); }
+
+  .action-card.designer {
+    border-color: rgba(245,197,66,0.2);
+    background: linear-gradient(135deg, var(--card) 0%, rgba(245,197,66,0.04) 100%);
+  }
+
+  .action-card.designer:hover {
+    border-color: rgba(245,197,66,0.4);
+    box-shadow: 0 8px 32px rgba(245,197,66,0.1);
+  }
+
+  /* Design Guidelines */
+  .guidelines {
+    display: grid;
+    gap: 16px;
+  }
+
+  .guideline {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+
+  .guideline-hdr {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.1s;
+  }
+
+  .guideline-hdr:hover {
+    background: var(--card2);
+  }
+
+  .guideline-hdr .g-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .guideline-hdr h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--warm);
+    flex: 1;
+  }
+
+  .guideline-hdr .arrow {
+    color: var(--mut);
+    font-size: 12px;
+    transition: transform 0.2s;
+  }
+
+  .guideline.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  .guideline-body {
+    display: none;
+    padding: 0 18px 16px;
+    font-size: 12px;
+    color: var(--warmd);
+    line-height: 1.7;
+  }
+
+  .guideline.open .guideline-body {
+    display: block;
+  }
+
+  .guideline-body strong {
+    color: var(--warm);
+    font-weight: 600;
+  }
+
+  .guideline-body code {
+    background: var(--card2);
+    border: 1px solid var(--bdr);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ocean);
+  }
+
+  .guideline-body .example {
+    margin: 10px 0;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--bdr);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--warmd);
+    line-height: 1.5;
+  }
+
+  .guideline-body .warn {
+    margin: 8px 0;
+    padding: 8px 12px;
+    background: var(--coralg);
+    border: 1px solid rgba(226,123,107,0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--coral);
+  }
+
+  .guideline-body .tip {
+    margin: 8px 0;
+    padding: 8px 12px;
+    background: var(--sageg);
+    border: 1px solid rgba(90,172,120,0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--sage);
+  }
+
+  .guideline-body ul {
+    padding-left: 18px;
+    margin: 6px 0;
+  }
+
+  .guideline-body li {
+    margin-bottom: 4px;
+  }
+
+  /* Chapter map */
+  .chapter-map {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .chapter-card {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    padding: 14px;
+    text-align: center;
+  }
+
+  .chapter-card .ch-emoji {
+    font-size: 24px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .chapter-card .ch-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--warm);
+    margin-bottom: 2px;
+  }
+
+  .chapter-card .ch-count {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--mut);
+  }
+
+  .chapter-card .ch-status {
+    margin-top: 6px;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .ch-status.done { background: var(--sageg); color: var(--sage); }
+  .ch-status.wip { background: var(--goldg); color: var(--gold); }
+  .ch-status.todo { background: rgba(90,96,128,0.15); color: var(--mut); }
+
+  /* Trap taxonomy */
+  .trap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+
+  .trap-card {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+
+  .trap-card .t-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+
+  .trap-card .t-desc {
+    font-size: 11px;
+    color: var(--mut);
+    line-height: 1.4;
+  }
+
+  /* Workflow section */
+  .workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    counter-reset: step;
+  }
+
+  .w-step {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    padding: 16px;
+    position: relative;
+  }
+
+  .w-step::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    top: -8px;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+    background: var(--ocean);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .w-step h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--warm);
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+
+  .w-step p {
+    font-size: 11px;
+    color: var(--mut);
+    line-height: 1.5;
+  }
+
+  /* Task board (simple) */
+  .task-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .task-col {
+    background: var(--surface);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    padding: 12px;
+    min-height: 200px;
+  }
+
+  .task-col-hdr {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mut);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--bdr);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .task-col-hdr .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot.todo { background: var(--mut); }
+  .dot.wip { background: var(--gold); }
+  .dot.done { background: var(--sage); }
+
+  .task-item {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--warmd);
+    cursor: default;
+  }
+
+  .task-item .t-owner {
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--mut);
+    margin-top: 4px;
+  }
+
+  .task-item .t-owner .dheeraj { color: var(--gold); }
+  .task-item .t-owner .brahma { color: var(--ocean); }
+
+  /* Info box */
+  .info-box {
+    background: var(--card);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    padding: 18px 22px;
+  }
+
+  .info-box h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--warm);
+    margin-bottom: 8px;
+  }
+
+  .info-box p, .info-box li {
+    font-size: 12px;
+    color: var(--warmd);
+    line-height: 1.6;
+  }
+
+  .info-box + .info-box {
+    margin-top: 12px;
+  }
+
+  .info-box a {
+    color: var(--ocean);
+    text-decoration: none;
+  }
+
+  .info-box a:hover {
+    text-decoration: underline;
+  }
+
+  .info-box code {
+    background: var(--card2);
+    border: 1px solid var(--bdr);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ocean);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-top: 1px solid var(--bdr);
+    font-size: 11px;
+    color: var(--mut);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .footer .neon {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .chapter-map { grid-template-columns: repeat(3, 1fr); }
+    .task-board { grid-template-columns: 1fr; }
+    .trap-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .chapter-map { grid-template-columns: repeat(2, 1fr); }
+    .trap-grid { grid-template-columns: 1fr; }
+    .actions-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Accordion toggle script helper */
+  .guideline-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+  }
+  .guideline-body th, .guideline-body td {
+    text-align: left;
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--bdr);
+    font-size: 11px;
+  }
+  .guideline-body th {
+    color: var(--warm);
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-icon">✦</div>
+    <h1>StarLine <span>Mission Control</span></h1>
+    <div class="hero-sub">
+      <span class="tag d">Dheeraj</span>
+      <span class="tag b">Brahma</span>
+      — collaboration hub · Neon Monk
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#tools" class="primary">✦ Tools</a>
+    <a href="#guidelines">Design Rules</a>
+    <a href="#chapters">Chapters</a>
+    <a href="#traps">Trap Taxonomy</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#tasks">Tasks</a>
+    <a href="#claude">Using Claude</a>
+  </nav>
+
+  <!-- QUICK ACTIONS -->
+  <div class="section" id="tools">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--goldg);">🛠</div>
+      <h2>Tools & Links</h2>
+    </div>
+    <div class="actions-grid">
+      <a class="action-card designer" href="starline-designer-v5.1.html" target="_blank">
+        <span class="a-badge live">Live</span>
+        <div class="a-icon">✦</div>
+        <h3>StarLine Designer v5.1</h3>
+        <p>Level design tool — place stars, draw edges, define traps, validate paths, export to Unity/Claude/JSON.</p>
+      </a>
+      <a class="action-card" href="https://github.com/neonmonk/starline" target="_blank">
+        <span class="a-badge soon">Setup</span>
+        <div class="a-icon">📦</div>
+        <h3>GitHub Repository</h3>
+        <p>Unity project source. Clone, branch, PR. Brahma creates feature branches for level data.</p>
+      </a>
+      <a class="action-card" href="#claude">
+        <span class="a-badge info">Guide</span>
+        <div class="a-icon">🤖</div>
+        <h3>Claude AI Workflow</h3>
+        <p>How to use Claude for level design, validation, and integration. Prompt templates included.</p>
+      </a>
+      <a class="action-card" href="#" onclick="return false;">
+        <span class="a-badge soon">Coming</span>
+        <div class="a-icon">📱</div>
+        <h3>Latest Build (APK)</h3>
+        <p>Download the latest test build to play through existing levels and verify new content.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- DESIGN GUIDELINES -->
+  <div class="section" id="guidelines">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--sageg);">📐</div>
+      <h2>Design Guidelines <span>for level designers</span></h2>
+    </div>
+
+    <div class="guidelines">
+
+      <div class="guideline open">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">🎯</span>
+          <h3>Core Mechanic — Free Connection Model</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>StarLine uses a <strong>free connection model</strong> (locked Feb 22). This is the most important design rule:</p>
+          <ul>
+            <li><strong>Any star can connect to any star.</strong> There are no adjacency constraints.</li>
+            <li><strong>Wrong moves are allowed</strong> and remain visible as drawn edges.</li>
+            <li><strong>Target edges define the goal</strong> — they are what the player must recreate, not constraints on movement.</li>
+            <li><strong>Win condition:</strong> The player's drawn edges exactly match target edges — with zero extras.</li>
+          </ul>
+          <div class="tip">✦ This means players create their own traps through wrong assumptions about the shape. The constellation silhouette draws them in; completing the correct edge set is the satisfaction.</div>
+          <div class="warn">⚠ This is NOT a Hamiltonian path game anymore. Don't design levels thinking about "paths." Think about <strong>which edges define the shape</strong> and which edges players will <strong>incorrectly assume</strong> are part of it.</div>
+        </div>
+      </div>
+
+      <div class="guideline">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">✨</span>
+          <h3>Shape = Motivation, Solve = Satisfaction</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>Every level follows this emotional arc:</p>
+          <ul>
+            <li><strong>The constellation silhouette</strong> is shown as a faint preview. This is the "hook" — players see the shape and want to create it.</li>
+            <li><strong>The puzzle</strong> is figuring out which star-to-star connections form that shape.</li>
+            <li><strong>Wrong assumptions</strong> (connecting stars that "look right" but aren't target edges) create discovery moments.</li>
+            <li><strong>Completion</strong> triggers a celebration animation. The constellation comes alive.</li>
+          </ul>
+          <p>Design principle: <strong>The shape should be immediately recognizable</strong> as a real object/animal/symbol. If the constellation doesn't read as what it's supposed to be, redesign it.</p>
+        </div>
+      </div>
+
+      <div class="guideline">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">📊</span>
+          <h3>Difficulty Scaling</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>Difficulty comes from two dimensions:</p>
+          <table>
+            <tr><th>Factor</th><th>Easy</th><th>Medium</th><th>Hard</th></tr>
+            <tr><td>Star count</td><td>4–6</td><td>7–10</td><td>11–16</td></tr>
+            <tr><td>Trap complexity</td><td>1 obvious trap</td><td>2–3 traps, layered</td><td>Multiple interacting traps</td></tr>
+            <tr><td>Target edges</td><td>3–5</td><td>6–10</td><td>10–18</td></tr>
+            <tr><td>Target time</td><td>15–25s</td><td>25–45s</td><td>45–90s</td></tr>
+          </table>
+          <div class="tip">✦ Target a 70-80% first-attempt solve rate. If testers consistently fail, the level is too hard for its position. Move it later in the chapter or simplify the trap.</div>
+          <div class="warn">⚠ Never put two hard levels in a row. Follow the wave pattern: easy → medium → hard → easy (relief) → medium → hard.</div>
+        </div>
+      </div>
+
+      <div class="guideline">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">🎭</span>
+          <h3>Narrative Tiers</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>Each level falls into one of three narrative tiers:</p>
+          <ul>
+            <li><strong>Ambient</strong> (majority) — Beautiful shapes, Lumen is delighted. Standard completion flow. Most levels are this.</li>
+            <li><strong>Discovery</strong> (chapter-defining) — First of a type, Lumen shows wonder. Special completion text. 2–3 per chapter.</li>
+            <li><strong>Revelation</strong> (rare emotional peaks) — Reframes the journey, paired with hardest puzzles. 1 per chapter max.</li>
+          </ul>
+          <p>When designing a level, tag it with its tier. This affects the celebration animation intensity, the fun fact shown at completion, and Lumen's reaction.</p>
+        </div>
+      </div>
+
+      <div class="guideline">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">🐾</span>
+          <h3>What Makes a Good Constellation Shape</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>The shape must pass the <strong>"squint test"</strong> — if you squint at the connected dots, you should immediately recognize the object/animal/symbol.</p>
+          <ul>
+            <li><strong>Silhouette clarity:</strong> The outline should read clearly at phone screen size. Test at 60% zoom.</li>
+            <li><strong>Star placement:</strong> Stars should sit at structural points (joints, tips, corners) — not evenly distributed. An animal should have stars at its head, tail, legs, not along its spine.</li>
+            <li><strong>Edge economy:</strong> Use the minimum edges needed for recognition. Extra edges that don't improve readability become confusion traps (bad) rather than design traps (good).</li>
+            <li><strong>Trap integration:</strong> The shape should naturally create at least one "obvious wrong connection." A star near another star that looks like it should connect but isn't part of the target.</li>
+          </ul>
+          <div class="example">Good: A dolphin with stars at nose, dorsal fin, tail tip, belly curve.<br>The tail-to-nose edge looks obvious but isn't in the target → natural trap.<br><br>Bad: A dolphin with 12 stars evenly spaced along its outline.<br>No natural traps, no structural clarity, boring to solve.</div>
+        </div>
+      </div>
+
+      <div class="guideline">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">🌍</span>
+          <h3>Regional Content Strategy</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>Build a <strong>universal backbone</strong> + <strong>regional objects</strong> per UA market:</p>
+          <ul>
+            <li><strong>Universal:</strong> Objects everyone recognizes — cat, dolphin, heart, tree, crown, etc.</li>
+            <li><strong>Regional (1–2 per market):</strong> Tarsier (PH), Kangaroo (AU), Sakura (JP), Eagle (US), etc.</li>
+            <li>Regional objects are sprinkled into chapters (not dedicated chapters). ~20 min per regional level.</li>
+          </ul>
+          <p>Philippines is the soft launch market. Include at least 1 PH-specific constellation (e.g., Tarsier, Jeepney, or Sampaguita flower).</p>
+        </div>
+      </div>
+
+      <div class="guideline">
+        <div class="guideline-hdr" onclick="this.parentElement.classList.toggle('open')">
+          <span class="g-icon">📐</span>
+          <h3>Coordinate System & Export Format</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="guideline-body">
+          <p>The StarLine Designer exports star positions as <strong>normalized coordinates (0–1 range)</strong>:</p>
+          <div class="example">stars: [(0.25, 0.30), (0.50, 0.15), (0.75, 0.30), ...]<br>edges: [(0,1), (1,2), (2,3), ...]</div>
+          <p><strong>Important Y-axis note:</strong> Star Tracer uses canvas coordinates (y=0 at top). Unity uses y=0 at bottom. The integration script applies <code>unity_y = 1 - canvas_y</code> automatically. You don't need to flip coordinates in the designer.</p>
+          <p>Export formats available:</p>
+          <ul>
+            <li><strong>Claude format</strong> — paste directly into Claude for validation, trap analysis, and Unity integration</li>
+            <li><strong>Unity C#</strong> — ready-to-paste pattern code</li>
+            <li><strong>JSON</strong> — structured data for any pipeline</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CHAPTERS -->
+  <div class="section" id="chapters">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--lavg);">📖</div>
+      <h2>Chapter Map <span>~50 levels total</span></h2>
+    </div>
+    <div class="chapter-map">
+      <div class="chapter-card">
+        <span class="ch-emoji">🌅</span>
+        <div class="ch-name">Ch1: First Light</div>
+        <div class="ch-count">5 tutorial levels</div>
+        <div class="ch-status wip">In Progress</div>
+      </div>
+      <div class="chapter-card">
+        <span class="ch-emoji">🐾</span>
+        <div class="ch-name">Ch2: Creature Sky</div>
+        <div class="ch-count">10–12 levels</div>
+        <div class="ch-status wip">Designing</div>
+      </div>
+      <div class="chapter-card">
+        <span class="ch-emoji">🌿</span>
+        <div class="ch-name">Ch3: World Around Us</div>
+        <div class="ch-count">10–12 levels</div>
+        <div class="ch-status todo">Planned</div>
+      </div>
+      <div class="chapter-card">
+        <span class="ch-emoji">⚔️</span>
+        <div class="ch-name">Ch4: Myth & Legend</div>
+        <div class="ch-count">10–12 levels</div>
+        <div class="ch-status todo">Planned</div>
+      </div>
+      <div class="chapter-card">
+        <span class="ch-emoji">🌌</span>
+        <div class="ch-name">Ch5: Cosmos</div>
+        <div class="ch-count">8–10 levels</div>
+        <div class="ch-status todo">Planned</div>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top: 16px;">
+      <h3>Level Naming Convention</h3>
+      <p>Every level is a named constellation: <code>Cat</code>, <code>Dolphin</code>, <code>Phoenix</code>, etc. On completion, players see: "✦ [Name] Restored" + a one-line fun fact (one-breath read). The name and fact should make the player feel they restored something meaningful to the sky.</p>
+    </div>
+  </div>
+
+  <!-- TRAP TAXONOMY -->
+  <div class="section" id="traps">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--coralg);">🪤</div>
+      <h2>Trap Taxonomy <span>the design moat</span></h2>
+    </div>
+    <p style="font-size: 12px; color: var(--mut); margin-bottom: 16px; line-height: 1.6;">
+      Traps are what make StarLine special. Every level should have at least one trap — an "obvious wrong connection" that feels right but isn't part of the target edges. Players discover the correct solution through trial and error. These traps create the "aha!" moment.
+    </p>
+    <div class="trap-grid">
+      <div class="trap-card">
+        <div class="t-name">🔒 Core Lockout</div>
+        <div class="t-desc">Player completes the outer ring first and can't reach the center without extra edges.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">🌀 Spiral Dead-end</div>
+        <div class="t-desc">Following the obvious spiral path leads to an isolated star that can't connect back.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">⏳ Choke Point</div>
+        <div class="t-desc">A critical node connects two subgraphs. Reaching it at the wrong time traps you.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">💍 Ring Completion</div>
+        <div class="t-desc">Completing a ring feels satisfying but leaves middle nodes unreachable.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">🚩 Wrong Start</div>
+        <div class="t-desc">The most visually prominent star (nose, top) is the wrong starting point.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">🔗 Edge Sharing</div>
+        <div class="t-desc">Two stars close together look like they should connect but that edge isn't in the target.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">☀️ Ray Skipping</div>
+        <div class="t-desc">Radial patterns where skipping a ray seems fine but creates an unreachable arm.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">🌊 Wave Isolation</div>
+        <div class="t-desc">Parallel curves where staying on one wave leaves the other unvisited.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">🏗️ Base-first</div>
+        <div class="t-desc">Building the foundation first (feels logical) blocks access to upper structures.</div>
+      </div>
+      <div class="trap-card">
+        <div class="t-name">⏱️ Center Timing</div>
+        <div class="t-desc">Visiting the center node too early or too late splits the graph into unreachable halves.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORKFLOW -->
+  <div class="section" id="workflow">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--oceang);">🔄</div>
+      <h2>Level Design Workflow <span>from idea to game</span></h2>
+    </div>
+    <div class="workflow-steps">
+      <div class="w-step">
+        <h4>Find Reference</h4>
+        <p>Search for a clear silhouette image of the object/animal. Simple outlines work best. Save it to use as overlay.</p>
+      </div>
+      <div class="w-step">
+        <h4>Design in StarLine Designer</h4>
+        <p>Upload reference image → place stars at structural points → draw target edges → name the level → set trap type.</p>
+      </div>
+      <div class="w-step">
+        <h4>Test in Designer</h4>
+        <p>Use the built-in play-test mode. Try to solve it yourself. Try the "obvious wrong" path first — does the trap work?</p>
+      </div>
+      <div class="w-step">
+        <h4>Validate with Claude</h4>
+        <p>Export "Claude format" → paste into Claude → ask for trap analysis, solution paths, difficulty rating. Claude validates the graph theory.</p>
+      </div>
+      <div class="w-step">
+        <h4>Export & Share</h4>
+        <p>Export as JSON or Unity C#. Share via GitHub PR or paste into a shared doc. Dheeraj integrates into the Unity project.</p>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top: 16px;">
+      <h3>Target: ~20 minutes per level</h3>
+      <p>Once you're comfortable with the Designer, a level should take about 20 minutes from reference image to validated export. Don't over-polish in the Designer — the Unity integration handles visuals.</p>
+    </div>
+  </div>
+
+  <!-- TASK BOARD -->
+  <div class="section" id="tasks">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--goldg);">📋</div>
+      <h2>Current Tasks <span>update this page as we go</span></h2>
+    </div>
+    <div class="task-board">
+      <div class="task-col">
+        <div class="task-col-hdr"><span class="dot todo"></span> To Do</div>
+        <div class="task-item">
+          Design Ch2 Creature Sky levels (10–12)
+          <div class="t-owner"><span class="brahma">Brahma</span></div>
+        </div>
+        <div class="task-item">
+          Design Ch3 World Around Us levels
+          <div class="t-owner"><span class="brahma">Brahma</span> + <span class="dheeraj">Dheeraj</span></div>
+        </div>
+        <div class="task-item">
+          Regional content: PH-specific constellations
+          <div class="t-owner"><span class="brahma">Brahma</span></div>
+        </div>
+        <div class="task-item">
+          Daily Sky puzzle designs (10 starter set)
+          <div class="t-owner"><span class="brahma">Brahma</span></div>
+        </div>
+      </div>
+      <div class="task-col">
+        <div class="task-col-hdr"><span class="dot wip"></span> In Progress</div>
+        <div class="task-item">
+          Ch1 First Light tutorial levels (5)
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+        <div class="task-item">
+          GitHub repo setup + .gitignore
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+        <div class="task-item">
+          Horizontal sky map bug fixes
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+      </div>
+      <div class="task-col">
+        <div class="task-col-hdr"><span class="dot done"></span> Done</div>
+        <div class="task-item">
+          Core gameplay mechanic ✓
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+        <div class="task-item">
+          StarLine Designer v5.1 ✓
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+        <div class="task-item">
+          Thank You screen + fun facts ✓
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+        <div class="task-item">
+          Tutorial prompt system ✓
+          <div class="t-owner"><span class="dheeraj">Dheeraj</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLAUDE WORKFLOW -->
+  <div class="section" id="claude">
+    <div class="section-hdr">
+      <div class="icon" style="background: var(--lavg);">🤖</div>
+      <h2>Working with Claude <span>AI-assisted level design</span></h2>
+    </div>
+
+    <div class="info-box">
+      <h3>Brahma's Claude Setup</h3>
+      <p>Since you have your own Claude account, here's how to get the most from it for StarLine level design:</p>
+      <ul style="padding-left: 18px; margin-top: 8px;">
+        <li><strong>Create a Claude Project</strong> called "StarLine Level Design"</li>
+        <li>Upload this Mission Control page and the Design Guidelines as project knowledge</li>
+        <li>In the project instructions, add: <code>"You are helping design levels for StarLine, a constellation puzzle game. Follow the free connection model rules and trap taxonomy documented in the project knowledge."</code></li>
+        <li>This gives your Claude instance all the context it needs to validate levels, suggest traps, and generate level data.</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h3>Prompt Templates for Level Design</h3>
+      <p style="margin-bottom: 10px;">Copy-paste these when working with Claude:</p>
+
+      <p><strong>1. Validate a level design:</strong></p>
+      <div class="example" style="margin-bottom: 12px;">Here's my StarLine level export:<br>[paste Claude format export from Designer]<br><br>Analyze this level: Does the trap work? What's the difficulty? Are there multiple solution paths? Any dead-end issues?</div>
+
+      <p><strong>2. Generate a constellation blueprint:</strong></p>
+      <div class="example" style="margin-bottom: 12px;">Design a StarLine constellation for a [ANIMAL/OBJECT].<br>Requirements:<br>- [N] stars at structural points<br>- At least 1 natural trap (preferably [TRAP TYPE])<br>- Target edges that form a recognizable silhouette<br>- Difficulty: [easy/medium/hard]<br><br>Output: star coordinates (0-1 range), target edges, trap description.</div>
+
+      <p><strong>3. Difficulty review:</strong></p>
+      <div class="example">I have these [N] levels designed for Chapter [X]. Here are their star counts and trap types:<br>[list levels]<br><br>Review the difficulty curve. Are there two hard levels in a row? Is the progression wave smooth?</div>
+    </div>
+
+    <div class="info-box">
+      <h3>What Claude Can Help With</h3>
+      <ul style="padding-left: 18px; margin-top: 8px;">
+        <li>Validating graph theory (are all target edges reachable? are there unintended solutions?)</li>
+        <li>Suggesting trap placements based on star layout</li>
+        <li>Writing fun facts for completion screens</li>
+        <li>Generating constellation blueprints from descriptions</li>
+        <li>Reviewing difficulty curves across a chapter</li>
+        <li>Converting between export formats (JSON ↔ Unity C# ↔ Claude format)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="neon">✦ Neon Monk</span> · StarLine Mission Control · "The sky faded because people stopped looking up."
+  </div>
+
+</div>
+</body>
+</html>
