@@ -1,0 +1,90 @@
+{
+  "date": "2026-04-27",
+  "generated_at": "2026-04-18T13:12:21Z",
+  "readings": {
+    "aries": {
+      "mood": "Today hums with first-light energy — the kind that makes you want to forge something bright before the world even wakes.",
+      "lumen": "You don't have to sprint everywhere today, but I love that you probably will anyway.",
+      "lucky_color": "ember glow",
+      "lucky_number": 7,
+      "lucky_note": "The best starts happen when no one's watching yet."
+    },
+    "taurus": {
+      "mood": "Your roots hum with quiet certainty today — what you've planted begins to show its first green promise.",
+      "lumen": "I watched you build this garden so patiently, Taurus. Now the soil whispers back.",
+      "lucky_color": "honeyed amber",
+      "lucky_number": 8,
+      "lucky_note": "Something velvet-soft settles into place where you've been tending it."
+    },
+    "gemini": {
+      "mood": "Your thoughts shimmer like quicksilver today—each idea catching light, refracting into something new and bright to follow.",
+      "lumen": "I watched you collect conversations like butterflies this morning. Your curiosity makes the whole sky glow.",
+      "lucky_color": "mirror silver",
+      "lucky_number": 17,
+      "lucky_note": "The wind carries whispers meant just for you—follow the echoes."
+    },
+    "cancer": {
+      "mood": "The tide turns gentle today, bringing treasures to your shore. Your heart glows like a lighthouse welcoming home wandering ships.",
+      "lumen": "I see you tucking everyone into moonlight — but today, let the Moon tuck you in too.",
+      "lucky_color": "pearl-silver",
+      "lucky_number": 12,
+      "lucky_note": "Someone remembers something you thought they forgot. It feels like coming home."
+    },
+    "leo": {
+      "mood": "Your mane catches the morning light just right today — every room you enter blooms a little warmer.",
+      "lumen": "I saved you the sunniest corner of the sky. Go ahead, take center stage.",
+      "lucky_color": "honeyglow",
+      "lucky_number": 17,
+      "lucky_note": "Someone's been waiting to applaud you. Let them."
+    },
+    "virgo": {
+      "mood": "Monday arrives like fresh morning dew — soft reset, clean slate. Your careful hands know exactly what needs tending first.",
+      "lumen": "I watched you organize starlight last night. Even the cosmos feels neater when you're around.",
+      "lucky_color": "linen white",
+      "lucky_number": 6,
+      "lucky_note": "The smallest adjustment blooms into the loveliest ripple today."
+    },
+    "libra": {
+      "mood": "The scales settle softly today, dear Libra — every mirror shows you something worth keeping.",
+      "lumen": "I saw you trying to decide for ten minutes. Both choices bloom. Pick the one that hums.",
+      "lucky_color": "rose quartz",
+      "lucky_number": 6,
+      "lucky_note": "Silk ribbons don't knot themselves — let partnerships unfold gently."
+    },
+    "scorpio": {
+      "mood": "Today the chrysalis hums with quiet knowing—transformation doesn't announce itself, it simply becomes. You are becoming.",
+      "lumen": "I see you glowing from the inside out, Scorpio. That ember? It's ready to bloom.",
+      "lucky_color": "volcanic glass",
+      "lucky_number": 8,
+      "lucky_note": "The deepest pools reflect the brightest stars when you let them."
+    },
+    "sagittarius": {
+      "mood": "The horizon hums with Monday's gentle invitation — every compass needle points toward something blooming just for you.",
+      "lumen": "I tucked a little stardust in your compass today. Let it lead you somewhere warm.",
+      "lucky_color": "sagebrush gold",
+      "lucky_number": 17,
+      "lucky_note": "The road unfolds softest when you let curiosity choose the first step."
+    },
+    "capricorn": {
+      "mood": "Monday hums with cathedral quiet — your careful plans bloom into architecture, each stone placed exactly where it belongs.",
+      "lumen": "I love how you build with patience. Today, the summit glows a little closer, doesn't it?",
+      "lucky_color": "moss on ancient granite",
+      "lucky_number": 8,
+      "lucky_note": "The tower you're building? Someone's already admiring it from below."
+    },
+    "aquarius": {
+      "mood": "Your frequency hums bright today — ideas crystallize into something warm and real, like frost becoming aurora.",
+      "lumen": "I see your wavelength glowing extra steady. The universe loves when you settle into yourself.",
+      "lucky_color": "glacier blue",
+      "lucky_number": 11,
+      "lucky_note": "Someone three orbits away is thinking exactly what you're thinking."
+    },
+    "pisces": {
+      "mood": "Monday arrives soft as fog, inviting you to drift between dreams and doing with iridescent ease.",
+      "lumen": "Your watercolor heart knows exactly which feeling to paint with today, sweet fish.",
+      "lucky_color": "pearl mist",
+      "lucky_number": 12,
+      "lucky_note": "Something you hummed in your sleep wants to become real."
+    }
+  }
+}
