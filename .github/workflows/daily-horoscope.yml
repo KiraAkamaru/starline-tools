@@ -5,6 +5,9 @@ on:
     - cron: '0 0 * * *'   # midnight UTC every day
   workflow_dispatch:        # manual trigger from Actions tab
 
+permissions:
+  contents: write           # allow the Action to commit and push
+
 jobs:
   generate:
     runs-on: ubuntu-latest
