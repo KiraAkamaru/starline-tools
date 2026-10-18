@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-18",
+  "signs": {
+    "aries": {
+      "mood": "Restless energy crackles beneath your skin today. Something wants to burst forward.",
+      "lumen": "I feel your spark, Aries. Channel it into one bold move.",
+      "lucky_color": "ember red",
+      "lucky_number": 5,
+      "lucky_note": "Your courage opens doors others didn't know existed."
+    },
+    "taurus": {
+      "mood": "A quiet contentment settles around you like soft wool. Savor this peace.",
+      "lumen": "Taurus, today asks you to simply be. That's enough.",
+      "lucky_color": "warm stone",
+      "lucky_number": 8,
+      "lucky_note": "Stillness reveals beauty you've been too busy to notice."
+    },
+    "gemini": {
+      "mood": "Your mind sparkles with a thousand delightful possibilities today. Pick one.",
+      "lumen": "I adore your curiosity, Gemini. Let it dance today.",
+      "lucky_color": "silver dawn",
+      "lucky_number": 3,
+      "lucky_note": "A conversation becomes the seed of something wonderful."
+    },
+    "cancer": {
+      "mood": "Your heart feels tender and full of unspoken wishes. Honor them gently.",
+      "lumen": "Cancer, your sensitivity is your superpower today. Trust it.",
+      "lucky_color": "pearl ivory",
+      "lucky_number": 2,
+      "lucky_note": "Someone needs your kindness more than you know."
+    },
+    "leo": {
+      "mood": "You radiate quiet confidence. The world notices your light today.",
+      "lumen": "Leo, let yourself shine without apology. You've earned it.",
+      "lucky_color": "golden amber",
+      "lucky_number": 1,
+      "lucky_note": "Your presence alone makes today brighter for those around you."
+    },
+    "virgo": {
+      "mood": "Details align beautifully. Your eye for refinement brings unexpected joy today.",
+      "lumen": "I see your careful magic, Virgo. The small things matter.",
+      "lucky_color": "sage green",
+      "lucky_number": 6,
+      "lucky_note": "Precision and care create small moments of perfection."
+    },
+    "libra": {
+      "mood": "Harmony flows through your day like a gentle melody. Breathe it in.",
+      "lumen": "Libra, today invites you to seek balance without struggle.",
+      "lucky_color": "rose quartz",
+      "lucky_number": 7,
+      "lucky_note": "Peace comes when you stop weighing and start trusting."
+    },
+    "scorpio": {
+      "mood": "Mysterious depths within you stir with purpose. Something wants revealing.",
+      "lumen": "Scorpio, your intensity transforms today. Lean into the mystery.",
+      "lucky_color": "midnight plum",
+      "lucky_number": 9,
+      "lucky_note": "Honest truth spoken now changes everything for the better."
+    },
+    "sagittarius": {
+      "mood": "Wanderlust awakens in your soul. Even small journeys feel like adventures.",
+      "lumen": "I feel your spirit calling, Sagittarius. Follow that pull.",
+      "lucky_color": "sunset orange",
+      "lucky_number": 11,
+      "lucky_note": "Exploration reveals wisdom hiding in the most ordinary places."
+    },
+    "capricorn": {
+      "mood": "Your determination crystallizes into clarity today. You know exactly what's next.",
+      "lumen": "Capricorn, your patience becomes your greatest asset now.",
+      "lucky_color": "slate blue",
+      "lucky_number": 4,
+      "lucky_note": "One steady step forward matters more than a thousand quick ones."
+    },
+    "aquarius": {
+      "mood": "Fresh ideas electrify your imagination. Tomorrow's dreams take shape today.",
+      "lumen": "Aquarius, your visionary nature sees what others miss.",
+      "lucky_color": "electric teal",
+      "lucky_number": 10,
+      "lucky_note": "Innovation blooms when you trust your unconventional thinking."
+    },
+    "pisces": {
+      "mood": "Dreams and reality blur into something magical. Surrender to the flow.",
+      "lumen": "Pisces, your intuition speaks clearly today. Listen closely.",
+      "lucky_color": "seafoam silk",
+      "lucky_number": 12,
+      "lucky_note": "Your imagination weaves the day into something extraordinary."
+    }
+  }
+}
