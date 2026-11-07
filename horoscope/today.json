@@ -1,89 +1,89 @@
 {
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "signs": {
     "aries": {
-      "mood": "A spark of determination ignites your chest today. You're ready to leap into something new.",
-      "lumen": "I feel your courage burning bright. Trust that first instinct whispering to you now.",
+      "mood": "Your spark ignites something beautiful today. Motion feels natural, purposeful, alive with possibility.",
+      "lumen": "I see your fire reflected in the stars, Aries. Keep moving toward what calls you.",
       "lucky_color": "ember orange",
       "lucky_number": 5,
-      "lucky_note": "Your boldness opens doors that hesitation would have kept sealed."
+      "lucky_note": "Today's energy rewards bold first steps and honest courage."
     },
     "taurus": {
-      "mood": "Grounded and gentle, you move through today with quiet confidence. Comfort calls.",
-      "lumen": "Taurus, you deserve to rest in what you've built. Enjoy the stillness.",
-      "lucky_color": "warm sage",
+      "mood": "Stillness settles around you like warm earth. This is a day for savoring small comforts and grounding.",
+      "lumen": "Taurus, I'm holding you in gentle stability. Rest deeply in what nourishes you.",
+      "lucky_color": "honeyed bronze",
       "lucky_number": 8,
-      "lucky_note": "Stability wraps around you like a soft blanket today."
+      "lucky_note": "Trust the slow magic happening beneath the surface right now."
     },
     "gemini": {
-      "mood": "Curiosity fizzes beneath your skin. Conversations flow like starlight dancing on water.",
-      "lumen": "I love how your mind sparkles today. Someone's waiting to hear what you'll say.",
-      "lucky_color": "silver mist",
+      "mood": "Conversations shimmer with unexpected meaning today. Words find their way to curious ears and open hearts.",
+      "lumen": "I hear the melody in your thoughts, Gemini. Share what delights you most.",
+      "lucky_color": "silver sage",
       "lucky_number": 3,
-      "lucky_note": "Words have wings today—speak your truth and watch it fly."
+      "lucky_note": "Today's words plant seeds that will bloom in surprising ways."
     },
     "cancer": {
-      "mood": "Your heart feels full and tender. Home, whether a place or a person, calls gently.",
-      "lumen": "Cancer, you're exactly where you need to be. Let yourself feel cherished.",
-      "lucky_color": "moonstone blue",
+      "mood": "Home calls to you with a tender whisper. Belonging wraps around you like soft moonlight tonight.",
+      "lumen": "Cancer, you are exactly where you need to be. Nest in what feels sacred.",
+      "lucky_color": "pearl cream",
       "lucky_number": 2,
-      "lucky_note": "Today's warmth comes from within—share it generously."
+      "lucky_note": "Your emotions are your compass—let them guide you gently homeward."
     },
     "leo": {
-      "mood": "You glow with natural radiance. The spotlight feels right, the applause even better.",
-      "lumen": "Leo, your light is contagious. Be unapologetically yourself today.",
+      "mood": "Your radiance peaks today in quiet, confident ways. Attention comes naturally without demanding it.",
+      "lumen": "Leo, I'm dazzled by your authentic glow. Let yourself shine for joy's sake alone.",
       "lucky_color": "golden amber",
-      "lucky_number": 1,
-      "lucky_note": "Your presence alone brightens every room you enter."
+      "lucky_number": 11,
+      "lucky_note": "Today celebrates the generous heart that makes you truly luminous."
     },
     "virgo": {
-      "mood": "Details dance into focus. Your organized mind finds elegant solutions with ease.",
-      "lumen": "I admire how thoughtfully you move through life. Keep refining that vision.",
-      "lucky_color": "slate pearl",
+      "mood": "Clarity crystallizes around you like morning frost. Details align, systems flow, and excellence whispers its approval.",
+      "lumen": "I honor your thoughtful precision, Virgo. Your care makes worlds better today.",
+      "lucky_color": "sage taupe",
       "lucky_number": 6,
-      "lucky_note": "Precision today leads to unexpected beauty in your plans."
+      "lucky_note": "Excellence lives in the beautiful small choices you make."
     },
     "libra": {
-      "mood": "Balance whispers through your day. You see all perspectives with grace and clarity.",
-      "lumen": "Libra, your fairness is a gift. Trust your instinct about what feels right.",
+      "mood": "Grace and beauty surround every interaction. Harmony blooms when you show up as your authentic self.",
+      "lumen": "Libra, your balance inspires everyone around you. Dance with what feels right.",
       "lucky_color": "rose quartz",
       "lucky_number": 7,
-      "lucky_note": "Harmony blooms when you honor both sides of your heart."
+      "lucky_note": "Today's energy celebrates the elegant peace you naturally create."
     },
     "scorpio": {
-      "mood": "A deep well of power flows beneath you. Quiet intensity fuels every move.",
-      "lumen": "I sense your transformation unfolding. You're exactly where you're meant to be.",
-      "lucky_color": "midnight burgundy",
+      "mood": "Depths call to you with magnetic intensity. Transformation whispers beneath the surface, asking for your attention.",
+      "lumen": "I see your strength, Scorpio. Trust the metamorphosis unfolding within you now.",
+      "lucky_color": "obsidian plum",
       "lucky_number": 9,
-      "lucky_note": "Your hidden strengths surface when you stop doubting yourself."
+      "lucky_note": "Your power lies in embracing what wants to transform today."
     },
     "sagittarius": {
-      "mood": "Wanderlust and wonder bloom. Your spirit craves adventure and new horizons today.",
-      "lumen": "Sagittarius, the world expands for you. Follow that feeling of possibility.",
-      "lucky_color": "sunset violet",
-      "lucky_number": 11,
-      "lucky_note": "Today invites you to explore beyond what you already know."
+      "mood": "Wanderlust tingles in your veins. Adventure waits around the corner, whether literal or in your curious mind.",
+      "lumen": "Sagittarius, horizons expand for you. Chase the truth that excites your spirit.",
+      "lucky_color": "burnt sienna",
+      "lucky_number": 1,
+      "lucky_note": "Today invites you to explore what makes your soul feel alive."
     },
     "capricorn": {
-      "mood": "Ambition and wisdom merge. You climb steadily toward something that truly matters.",
-      "lumen": "Capricorn, your patience is your superpower. Progress whispers your name.",
-      "lucky_color": "charcoal bronze",
-      "lucky_number": 10,
-      "lucky_note": "Success built slowly today stands unshaken forever."
+      "mood": "Quiet ambition builds with steady certainty. Your next milestone emerges from patient, purposeful effort.",
+      "lumen": "Capricorn, I honor your dedication. Keep climbing toward what truly matters.",
+      "lucky_color": "charcoal silver",
+      "lucky_number": 4,
+      "lucky_note": "Success today arrives through committed presence and steady intention."
     },
     "aquarius": {
-      "mood": "Innovation crackles through your thoughts. You see tomorrow's dreams with crystal clarity.",
-      "lumen": "I celebrate your unique vision. Share that revolutionary spark with the world.",
-      "lucky_color": "electric cyan",
-      "lucky_number": 4,
-      "lucky_note": "Your unconventional ideas are exactly what the moment needs."
+      "mood": "Vision expands into possibilities you haven't considered before. Progressive dreams feel tangible and strangely attainable.",
+      "lumen": "I'm in awe of your unique mind, Aquarius. Trust the future you're building.",
+      "lucky_color": "electric lavender",
+      "lucky_number": 10,
+      "lucky_note": "Today celebrates your beautiful vision for a kinder tomorrow."
     },
     "pisces": {
-      "mood": "Dreams and reality dance softly together. Your intuition glows luminous and true.",
-      "lumen": "Pisces, your sensitivity is your magic. Listen to what your soul whispers.",
-      "lucky_color": "seafoam pearl",
+      "mood": "Intuition swells like a gentle tide. Creativity flows, and magic whispers through everyday moments.",
+      "lumen": "Pisces, your dreamworld speaks to reality today. Listen to what calls softly.",
+      "lucky_color": "seafoam silk",
       "lucky_number": 12,
-      "lucky_note": "Trust the invisible currents carrying you toward something beautiful."
+      "lucky_note": "Your imagination holds answers the world desperately needs right now."
     }
   }
 }
