@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-27",
+  "signs": {
+    "aries": {
+      "mood": "Your spark ignites with quiet purpose today. Energy flows like embers finding their way home.",
+      "lumen": "I see your fire banking low—perfect for building something solid.",
+      "lucky_color": "ember rust",
+      "lucky_number": 5,
+      "lucky_note": "Patience now plants seeds for tomorrow's victories."
+    },
+    "taurus": {
+      "mood": "Grounded and present, you feel the earth breathing beneath you. Comfort wraps around your shoulders.",
+      "lumen": "Taurus, your steadiness is a gift today. Lean into it.",
+      "lucky_color": "warm clay",
+      "lucky_number": 8,
+      "lucky_note": "Rest is not laziness; it is your superpower."
+    },
+    "gemini": {
+      "mood": "Curiosity blooms in unexpected corners. Your mind dances between three delightful possibilities.",
+      "lumen": "I sense playfulness in your thoughts today, dear Gemini.",
+      "lucky_color": "spring mint",
+      "lucky_number": 3,
+      "lucky_note": "Conversations plant gardens that bloom for seasons ahead."
+    },
+    "cancer": {
+      "mood": "Softness fills your inner world today. You're tending something precious and invisible.",
+      "lumen": "Cancer, your heart knows what it needs. Listen gently.",
+      "lucky_color": "moonlit silver",
+      "lucky_number": 2,
+      "lucky_note": "Your intuition whispers louder than usual today."
+    },
+    "leo": {
+      "mood": "Warmth radiates from your quiet confidence. Today feels like golden hour all day long.",
+      "lumen": "Leo, your light needs no stage today—just shine.",
+      "lucky_color": "sunset gold",
+      "lucky_number": 11,
+      "lucky_note": "Authenticity is more magnetic than any performance."
+    },
+    "virgo": {
+      "mood": "Clarity arrives like morning light through clean glass. Details sparkle with meaning.",
+      "lumen": "I admire how you refine the world around you, Virgo.",
+      "lucky_color": "dove gray",
+      "lucky_number": 6,
+      "lucky_note": "Small improvements compound into beautiful transformations."
+    },
+    "libra": {
+      "mood": "Balance feels effortless today. You move between people and spaces with natural grace.",
+      "lumen": "Libra, your gift for harmony heals more than you know.",
+      "lucky_color": "rose quartz",
+      "lucky_number": 7,
+      "lucky_note": "Fairness and kindness are your compass today."
+    },
+    "scorpio": {
+      "mood": "Depth calls to you from within. You're ready to dive into what matters most.",
+      "lumen": "I feel your truth seeking, Scorpio. Trust the descent.",
+      "lucky_color": "obsidian black",
+      "lucky_number": 9,
+      "lucky_note": "Transformation begins in the spaces you explore alone."
+    },
+    "sagittarius": {
+      "mood": "Wanderlust stirs gently, even if you stay still. Horizons expand in your imagination.",
+      "lumen": "Sagittarius, adventure lives in perspective, not just distance.",
+      "lucky_color": "horizon blue",
+      "lucky_number": 12,
+      "lucky_note": "Wisdom grows when curiosity meets contentment."
+    },
+    "capricorn": {
+      "mood": "Purposeful energy builds beneath your steady hands. Progress feels tangible and real.",
+      "lumen": "Capricorn, your foundation grows stronger each step you take.",
+      "lucky_color": "charcoal stone",
+      "lucky_number": 4,
+      "lucky_note": "Discipline today becomes freedom tomorrow."
+    },
+    "aquarius": {
+      "mood": "Innovation hums quietly in your mind. You're connecting dots others haven't yet seen.",
+      "lumen": "I celebrate your brilliant, unconventional vision, Aquarius.",
+      "lucky_color": "electric lavender",
+      "lucky_number": 10,
+      "lucky_note": "Your unique perspective is exactly what the world needs now."
+    },
+    "pisces": {
+      "mood": "Imagination swirls like watercolors bleeding together. Your dreams feel remarkably tangible.",
+      "lumen": "Pisces, your creativity flows as easily as water today.",
+      "lucky_color": "sea foam",
+      "lucky_number": 1,
+      "lucky_note": "Dreams and reality blur in the most magical way."
+    }
+  }
+}
